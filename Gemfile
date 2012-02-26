@@ -4,13 +4,14 @@ gem 'rails', '3.1.3'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
+group :development do
+  gem 'sqlite3'
+  gem 'nifty-generators'
+end
 
-gem 'sqlite3'
 group :production do
   gem 'pg'
 end
-
-gem "nifty-generators", :group => :development
 
 group :test do
   gem 'database_cleaner'
