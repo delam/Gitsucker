@@ -51,4 +51,8 @@ group :test do
   gem 'turn', '0.8.2', :require => false
 end
 
-gem 'octopi'
+#gem 'httparty'
+#gem 'mechanize'
+#gem 'api_cache'
+#
+gem 'octokit'

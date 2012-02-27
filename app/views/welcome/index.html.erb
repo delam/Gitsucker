@@ -1,0 +1,34 @@
+<h1>Github Sucker</h1>
+<div class="page_content_wrapper">
+  <div id="search">
+  <%= form_tag '/' do %>
+    <span><%= text_field_tag 'name', "#{ (@name || 'fcoury/octopi') }", :placeholder => "fcoury/octopi", :class => 'search_input' %></span>
+    <span><%= submit_tag 'Suck It', :class => 'submit_button' %></span>
+    <div class="note">* Github API v3 requires username and project name</div>
+  <% end %>
+  </div>
+</div>
+
+<% if @results %>
+<div class="page_content_wrapper">
+  <h3>Users That Forked <%= @name %></h3>
+  <table>
+    <tr>
+      <th><%= link_to('Name', "/?name=#{@name}&sort=name") %></th>
+      <th><%= link_to('Original Projects', "/?name=#{@name}&sort=original") %></th>
+      <th><%= link_to('Forked Projects', "/?name=#{@name}&sort=forked") %></th>
+      <th><%= link_to('Ruby Projects', "/?name=#{@name}&sort=ruby_projects") %></th>
+      <th><%= link_to('Javascript Projects', "/?name=#{@name}&sort=js_projects") %></th>
+    </tr>
+    <% for result in @results %>
+      <tr>
+        <td><%= link_to(result[:name], "https://github.com/#{result[:name]}") %></td>
+        <td><%= result[:original] %></td>
+        <td><%= result[:forked] %></td>
+        <td><%= result[:ruby_projects] %></td>
+        <td><%= result[:js_projects] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<% end %>
